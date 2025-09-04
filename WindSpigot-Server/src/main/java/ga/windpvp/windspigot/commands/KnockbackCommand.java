@@ -32,7 +32,7 @@ public class KnockbackCommand extends Command {
 
 		switch (args.length) {
             case 1: {
-                if (args[0].toLowerCase().equalsIgnoreCase("help")) {
+                if (args[0].equalsIgnoreCase("help")) {
                     player.sendMessage("§bKnockback Help:\n"
                     + "§f/kb §7-§e View all knockback profiles\n"
                     + "§f/kb create §6<name> §7-§e Create a knockback profile\n"
@@ -119,22 +119,19 @@ public class KnockbackCommand extends Command {
 			break;
 		}
 		case 3: {
-			switch (args[0].toLowerCase()) {
-			case "set": {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
-				if (profile == null) {
-					sender.sendMessage("§cA profile with that name could not be found.");
-					return false;
-				}
-				Player target = Bukkit.getPlayer(args[2]);
-				if (target == null) {
+            if (args[0].equalsIgnoreCase("set")) {
+                KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
+                if (profile == null) {
+                    sender.sendMessage("§cA profile with that name could not be found.");
+                    return false;
+                }
+                Player target = Bukkit.getPlayer(args[2]);
+                if (target == null) {
                     sender.sendMessage("§cCould not find the player '§e" + args[0] + "§c' on the server.");
-					return false;
-				}
-				target.setKnockbackProfile(profile);
-				break;
-			}
-			}
+                    return false;
+                }
+                target.setKnockbackProfile(profile);
+            }
 			break;
 		}
 		case 4: {
