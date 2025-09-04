@@ -4,17 +4,17 @@ import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 import org.bukkit.entity.Player;
 
 public class PlayerKnockback {
-    private Player player;
+    private final Player player;
 
     public PlayerKnockback(Player player) {
         this.player = player;
     }
 
-    public void setKnockback(Player player, KnockbackProfile profile) {
+    public void setKnockback(KnockbackProfile profile) {
         player.setKnockbackProfile(profile);
     }
 
-    public KnockbackProfile getKnockback(Player player) {
+    public KnockbackProfile getKnockback() {
         return player.getKnockbackProfile();
     }
 }
