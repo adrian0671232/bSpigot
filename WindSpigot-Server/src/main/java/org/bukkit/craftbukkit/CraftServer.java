@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
+import ac.stevano.util.ServerInfo;
 import org.apache.commons.lang.Validate;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
@@ -172,9 +173,9 @@ import xyz.sculas.nacho.malware.AntiMalware;
 
 public final class CraftServer implements Server {
 	private static final Player[] EMPTY_PLAYER_ARRAY = new Player[0];
-	private String serverName = "WindSpigot";
+	private String serverName = ServerInfo.getServerName();
 	private final String serverVersion;
-	private final String bukkitVersion = Versioning.getBukkitVersion();
+	private final String bukkitVersion = ServerInfo.getServerVersion();
 	private final Logger logger = Logger.getLogger("Minecraft");
 	private final ServicesManager servicesManager = new SimpleServicesManager();
 	private final CraftScheduler scheduler = new CraftScheduler();

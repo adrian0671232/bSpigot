@@ -21,7 +21,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
-public class ServerStatisticManager extends StatisticManager {
+public class
+ServerStatisticManager extends StatisticManager {
 
 	private static final Logger b = LogManager.getLogger();
 	private final MinecraftServer c;

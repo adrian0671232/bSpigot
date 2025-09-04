@@ -41,7 +41,7 @@ public class PingCommand extends Command {
 						.replace("%ping%", ((Integer) ((CraftPlayer) pingPlayer).getPing()).toString());
 				sender.sendMessage(finalString);
 			} else {
-				sender.sendMessage(ChatColor.RED + "Invalid player!");
+				sender.sendMessage(ChatColor.RED + "Could not find the player '" + ChatColor.YELLOW + args[0] + ChatColor.RED + "' on the server.");
 			}
 			
 			// Message on improper usage

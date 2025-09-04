@@ -14,9 +14,9 @@ public class SetMaxSlotCommand extends Command {
 	public SetMaxSlotCommand(String name) {
 		super(name);
 		this.description = "Set the max slots for the server";
-		this.usageMessage = "/sms [amount]";
+		this.usageMessage = "/sms <amount>";
 		this.setAliases(Arrays.asList("smp", "setslots"));
-		setPermission("windspigot.command.sms");
+		setPermission("bughaspigot.command.sms");
 	}
 
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
@@ -24,20 +24,20 @@ public class SetMaxSlotCommand extends Command {
 			return true;
 		if (args.length != 1) {
 			sender.sendMessage(
-					CC.gray + "There are currently " + CC.white + Bukkit.getMaxPlayers() + CC.gray + " slots!");
+					"There are currently " + CC.aqua + Bukkit.getMaxPlayers() + CC.reset + " slots!");
 			sender.sendMessage(
-					ChatColor.RED + "Please use '/sms [amount]' to set the number of max slots for the server");
+					ChatColor.RED + "Usage: /setslots <amount>");
 			return false;
 		}
 		int amount;
 		try {
 			amount = Integer.parseInt(args[0]);
 		} catch (Exception ex) {
-			sender.sendMessage(ChatColor.RED + "Please enter a number instead of '" + args[0] + "'.");
+			sender.sendMessage(ChatColor.RED + "Amount must be an Integer. " + ChatColor.GRAY + "(" + args[0] + ")");
 			return false;
 		}
 		Bukkit.getServer().setMaxPlayers(amount);
-		sender.sendMessage(ChatColor.GREEN + "Player slots are now set at " + amount);
+		sender.sendMessage("Set player slots to " + ChatColor.AQUA + amount + ChatColor.RESET + ".");
 		return false;
 	}
 }

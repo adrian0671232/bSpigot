@@ -11,19 +11,19 @@ public class SpawnMobCommand extends Command {
 	public SpawnMobCommand(String name) {
 		super(name);
 		this.description = "Spawn mobs";
-		this.usageMessage = "/spawnmob <mob name> [amount]";
-		setPermission("windspigot.command.spawnmob");
+		this.usageMessage = "/spawnmob <mob name> <amount>";
+		setPermission("bughaspigot.command.spawnmob");
 	}
 
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 		if (!testPermission(sender))
 			return true;
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "Please run this command as a player");
+			sender.sendMessage(ChatColor.RED + "Player only.");
 			return true;
 		}
 		if (args.length == 0) {
-			sender.sendMessage(ChatColor.RED + "Please use '/spawnmob <mob name> [amount]'");
+			sender.sendMessage(ChatColor.RED + "Usage: /spawnmob <mob name> <amount>");
 			return false;
 		}
 
@@ -40,7 +40,7 @@ public class SpawnMobCommand extends Command {
 				entityListStr.append(ChatColor.GREEN).append(entityVal.name()).append(ChatColor.WHITE).append(", ");
 			entityListStr.setLength(entityListStr.length() - 2);
 
-			player.sendMessage(ChatColor.RED + "Please give a correct entity type");
+			player.sendMessage(ChatColor.RED + "Unknown entity type of '" + ChatColor.YELLOW + args[0] + ChatColor.RED + "'.");
 			player.sendMessage(entityListStr.toString());
 			return false;
 		}
@@ -49,7 +49,7 @@ public class SpawnMobCommand extends Command {
 			try {
 				amount = Integer.parseInt(args[1]);
 			} catch (Exception ex) {
-				player.sendMessage(ChatColor.RED + "Please enter a number instead of '" + args[1] + "'.");
+                player.sendMessage(ChatColor.RED + "Amount must be an Integer. " + ChatColor.GRAY + "(INVALID: " + args[1] + ")");
 				return false;
 			}
 		}

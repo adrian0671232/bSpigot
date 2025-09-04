@@ -15,7 +15,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class KnockbackCommand extends Command {
 
-	private final String separator = "§8§m-=-------------------------=-";
+	private final String separator = "";
 
 	public KnockbackCommand(String name) {
 		super(name);
@@ -31,6 +31,20 @@ public class KnockbackCommand extends Command {
 		Player player = (Player) sender;
 
 		switch (args.length) {
+            case 1: {
+                if (args[0].toLowerCase().equalsIgnoreCase("help")) {
+                    player.sendMessage("§bKnockback Help:\n"
+                    + "§f/kb §7-§e View all knockback profiles\n"
+                    + "§f/kb create §6<name> §7-§e Create a knockback profile\n"
+                    + "§f/kb delete §6<name> §7-§e Delete an existing knockback profile\n"
+                    + "§f/kb load §6<name> §7-§e Load a knockback profile for everyone\n"
+                    + "§f/kb view §6<name> §7-§e View a knockback profile's values\n"
+                    + "§f/kb projectile §6<name> §7-§e View a knockback profile's projectile values\n"
+                    + "§f/kb set §6<name> §7-§e Set a specific player to have a specific knockback profile\n"
+                    + "\n§7/kb help to view this message");
+                }
+                break;
+            }
 		case 2: {
 			switch (args[0].toLowerCase()) {
 			case "create": {
@@ -114,7 +128,7 @@ public class KnockbackCommand extends Command {
 				}
 				Player target = Bukkit.getPlayer(args[2]);
 				if (target == null) {
-					sender.sendMessage("§cThat player is not online.");
+                    sender.sendMessage("§cCould not find the player '§e" + args[0] + "§c' on the server.");
 					return false;
 				}
 				target.setKnockbackProfile(profile);
@@ -133,7 +147,7 @@ public class KnockbackCommand extends Command {
 				switch (args[2].toLowerCase()) {
 				case "friction-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -145,7 +159,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "friction-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -157,7 +171,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -169,7 +183,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -181,7 +195,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "extra-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						sender.sendMessage("§4" + args[3] + " §c is not a number.");
+						sender.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -193,7 +207,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "extra-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -205,7 +219,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "vertical-max": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -217,7 +231,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "vertical-min": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -241,7 +255,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "rod-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -253,7 +267,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "rod-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -265,7 +279,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "arrow-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -277,7 +291,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "arrow-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -289,7 +303,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "pearl-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -301,7 +315,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "pearl-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -313,7 +327,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "snowball-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -325,7 +339,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "snowball-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -337,7 +351,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "egg-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -349,7 +363,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "egg-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -361,7 +375,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "wtap-extra-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -373,7 +387,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "wtap-extra-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -385,7 +399,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "add-horizontal": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -397,7 +411,7 @@ public class KnockbackCommand extends Command {
 				}
 				case "add-vertical": {
 					if (!NumberUtils.isNumber(args[3])) {
-						player.sendMessage("§4" + args[3] + " §c is not a number.");
+						player.sendMessage("§cAmount must be an Integer. " + "§7(INVALID: " + args[3] + ")");
 						return false;
 					}
 					double value = Double.parseDouble(args[3]);
@@ -413,78 +427,80 @@ public class KnockbackCommand extends Command {
 		}
 		default: {
 			knockbackCommandMain(player);
-		}
+		    }
 		}
 		return false;
 	}
 
 	private void knockbackCommandMain(Player player) {
-		player.sendMessage(separator + "\n" + "§a§lKnockback profile list:\n");
-
+		player.sendMessage(separator + "\n" + "§6Knockback Profiles " + "§7(" + KnockbackConfig.getKbProfiles().size() + " profiles):" + "\n");
 		for (KnockbackProfile profile : KnockbackConfig.getKbProfiles()) {
 			boolean current = KnockbackConfig.getCurrentKb().getName().equals(profile.getName());
 
-			TextComponent line = new ClickableBuilder("§8§l(§e§l➜§8§l) ")
-					.setHover("§c[Click here to apply this profile to a player] ")
+			TextComponent line = new ClickableBuilder("§e[SET] ")
+					.setHover("§eClick to apply this profile to a player.")
 					.setClick("/kb set " + profile.getName() + " ", ClickEvent.Action.SUGGEST_COMMAND).build();
-			TextComponent load = new ClickableBuilder("§8§l(" + (current ? "§a" : "§7") + "✔§8§l) ")
-					.setHover(current ? "§c[This profile is loaded] " : "§a[Click here to load this profile]")
+
+            TextComponent edit = new ClickableBuilder("§f " + profile.getName() + " ")
+                    .setHover("§aClick to edit §e" + profile.getName() + "§a.")
+                    .setClick("/kb view " + profile.getName(), ClickEvent.Action.RUN_COMMAND).build();
+
+			TextComponent load = new ClickableBuilder(current ? "§a[LOADED] " : "§7[LOAD] ")
+					.setHover(current ? "§aThis profile is already loaded." : "§eClick here to load this profile.")
 					.setClick("/kb load " + profile.getName(), ClickEvent.Action.RUN_COMMAND).build();
-			TextComponent delete = new ClickableBuilder("§8§l(§c§l✖§8§l) ")
-					.setHover("§c[Click here to delete this profile] ")
+
+			TextComponent delete = new ClickableBuilder("§c[DELETE]")
+					.setHover("§c§lClick to permanently delete this profile.")
 					.setClick("/kb delete " + profile.getName(), ClickEvent.Action.RUN_COMMAND).build();
-			TextComponent edit = new ClickableBuilder("§7 " + profile.getName() + " §8§l[§6§l✎§8§l]")
-					.setHover("§e[Click here to edit this profile]")
-					.setClick("/kb view " + profile.getName(), ClickEvent.Action.RUN_COMMAND).build();
-			player.spigot().sendMessage(line, load, delete, edit);
+
+			player.spigot().sendMessage(edit, line, load, delete);
 		}
 
 		player.spigot()
-				.sendMessage(new ClickableBuilder("\n§8§l[§a§lCreate new profile§8]")
-						.setHover("§c[Click here to create a new profile]")
+				.sendMessage(new ClickableBuilder("\n§a§lCREATE")
+						.setHover("§aClick to create a new profile.")
 						.setClick("/kb create ", ClickEvent.Action.SUGGEST_COMMAND).build());
 		player.sendMessage(separator);
 	}
 
 	private void knockbackCommandView(Player player, KnockbackProfile profile) {
-		player.sendMessage(separator + "\n" + "§a§lKnockback values:\n");
+		player.sendMessage(separator + "\n§b" + profile.getName() + ":" + "\n");
 		for (String values : profile.getKnockbackValues()) {
-			TextComponent value = new TextComponent("§6» §e" + values);
-			TextComponent edit = new ClickableBuilder(" §8§l[§e§l✎§8§l]")
-					.setHover("§e[Click to edit " + values + " value]")
+			TextComponent value = new TextComponent("§7 * §f" + values);
+			TextComponent edit = new ClickableBuilder(" §e[EDIT]")
+					.setHover("Click to edit §e" + values + "§f.")
 					.setClick("/kb edit " + profile.getName() + " " + values.replace("§7: ", " "),
 							ClickEvent.Action.SUGGEST_COMMAND)
 					.build();
 			player.spigot().sendMessage(value, edit);
 		}
-		TextComponent page = new ClickableBuilder("\n§8§l[§c§l⬑§8§l] ").setHover("§e[Click to back]")
+		TextComponent page = new ClickableBuilder("\n§c[BACK]").setHover("§eClick to view all profiles.")
 				.setClick("/kb", ClickEvent.Action.RUN_COMMAND).build();
-		TextComponent projectiles = new ClickableBuilder(" §8§l[§a§lEdit projectiles§8§l]")
+		TextComponent projectiles = new ClickableBuilder(" §a[PROJECTILES]")
 				.setClick("/kb projectile " + profile.getName(), ClickEvent.Action.RUN_COMMAND)
-				.setHover("§e[Click to edit projectiles]").build();
+				.setHover("§eClick to edit projectile values.").build();
 		player.spigot().sendMessage(page, projectiles);
 		player.sendMessage(separator);
 	}
 
 	private void knockbackCommandViewProjectiles(Player player, KnockbackProfile profile) {
-		player.sendMessage(separator + "\n§a§lProjectiles values: \n");
+		player.sendMessage(separator + "\n§b" + profile.getName() + "§7 (Projectiles):" + "\n");
 		for (String values : profile.getProjectilesValues()) {
-			TextComponent value = new TextComponent("§6» §e" + values);
-			TextComponent edit = new ClickableBuilder(" §8§l[§e§l✎§8§l]")
-					.setHover("§e[Click here to edit " + values + " value]")
+			TextComponent value = new TextComponent("§7 * §f" + values);
+			TextComponent edit = new ClickableBuilder(" §e[EDIT]")
+                    .setHover("Click to edit §e" + values + "§f.")
 					.setClick("/kb edit " + profile.getName() + " " + values.replace("§7: ", " "),
 							ClickEvent.Action.SUGGEST_COMMAND)
 					.build();
 			player.sendMessage(value, edit);
 		}
-		TextComponent page = new ClickableBuilder("\n§8§l[§c§l⬑§8§l] ").setHover("§e[Click to back]")
-				.setClick("/kb", ClickEvent.Action.RUN_COMMAND).build();
-		TextComponent knockback = new ClickableBuilder("§8§l[§a§lEdit knockback§8§l]")
-				.setHover("§e[Click here to edit this knockback]")
-				.setClick("/kb view " + profile.getName(), ClickEvent.Action.RUN_COMMAND).build();
-		player.spigot().sendMessage(page, knockback);
+        TextComponent page = new ClickableBuilder("\n§c[BACK]").setHover("§eClick to view all profiles.")
+                .setClick("/kb", ClickEvent.Action.RUN_COMMAND).build();
+        TextComponent projectiles = new ClickableBuilder(" §a[KNOCKBACK]")
+                .setClick("/kb view " + profile.getName(), ClickEvent.Action.RUN_COMMAND)
+                .setHover("§eClick to edit projectile values.").build();
+        player.spigot().sendMessage(page, projectiles);
 		player.sendMessage(separator);
-
 	}
 
 	private boolean isProfileName(String name) {

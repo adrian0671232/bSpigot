@@ -45,18 +45,16 @@ public class TicksPerSecondCommand extends Command {
 			tileEntityCount = tileEntityCount + world.tileEntityList.size();
 		}
 		
-		sender.sendMessage(ChatColor.DARK_AQUA + "WindSpigot Performance:");
-		sender.sendMessage(ChatColor.AQUA + "TPS from last 1m, 5m, 15m: "
+		sender.sendMessage(ChatColor.AQUA + "Performance:");
+		sender.sendMessage("TPS (1m, 5m, 15m): "
 				+ org.apache.commons.lang.StringUtils.join(tpsAvg, ", "));
-		sender.sendMessage(ChatColor.AQUA + "Current Memory Usage: " + ChatColor.GREEN
+		sender.sendMessage("Memory: " + ChatColor.GREEN
 				+ ((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "/"
-				+ (Runtime.getRuntime().totalMemory() / (1024 * 1024)) + " mb (Max: "
-				+ (Runtime.getRuntime().maxMemory() / (1024 * 1024)) + " mb)");
-		sender.sendMessage(ChatColor.AQUA + "Online Players: " + ChatColor.GREEN + Bukkit.getOnlinePlayers().size());
-		sender.sendMessage(ChatColor.AQUA + "Entity Count: " + ChatColor.GREEN + entityCount);
-		sender.sendMessage(ChatColor.AQUA + "Tile Entity Count: " + ChatColor.GREEN + tileEntityCount);
-		sender.sendMessage(ChatColor.AQUA + "Mob AI: " + ChatColor.GREEN + MinecraftServer.getServer().worlds.get(0).nachoSpigotConfig.enableMobAI);
-		sender.sendMessage(ChatColor.AQUA + "Milliseconds to Run Last Tick: " + ChatColor.GREEN + Math.round(MinecraftServer.getServer().getLastMspt() * 100.0) / 100.0);
+				+ (Runtime.getRuntime().totalMemory() / (1024 * 1024)) + " MB " + ChatColor.GRAY + "(Max: "
+				+ (Runtime.getRuntime().maxMemory() / (1024 * 1024)) + " MB)");
+		sender.sendMessage("Online Players: " + ChatColor.GREEN + Bukkit.getOnlinePlayers().size()  + "/" + Bukkit.getMaxPlayers());
+		sender.sendMessage("Entities: " + ChatColor.GREEN + entityCount + ChatColor.GRAY + " (" + tileEntityCount + " Tile Entities)");
+		sender.sendMessage("Last Tick Time: " + ChatColor.GREEN + Math.round(MinecraftServer.getServer().getLastMspt() * 100.0) / 100.0 + "ms");
 		
 		return true;
 	}

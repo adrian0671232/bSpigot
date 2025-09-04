@@ -1,9 +1,9 @@
 package ga.windpvp.windspigot.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import net.md_5.bungee.api.ChatColor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.WorldServer;
 
@@ -16,7 +16,7 @@ public class MobAICommand extends Command {
 		super(name);
 		this.description = "Toggles Mob AI";
 		this.usageMessage = "/mobai";
-		this.setPermission("windspigot.command.mobai");
+		this.setPermission("bughaspigot.command.mobai");
 	}
 
 	@Override
@@ -31,8 +31,8 @@ public class MobAICommand extends Command {
 			world.nachoSpigotConfig.enableMobAI = globalAI;
 		}
 		
-		String status = globalAI ? "enabled" : "disabled";
-		sender.sendMessage(ChatColor.GREEN + "Mob AI is now " + status + " in all worlds.");
+		String status = globalAI ? ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled";
+		sender.sendMessage("Mob AI is now " + status + ChatColor.RESET + " in all worlds.");
 
 		return true;
 	}
