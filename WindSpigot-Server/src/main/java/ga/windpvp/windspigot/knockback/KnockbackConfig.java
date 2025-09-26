@@ -27,7 +27,7 @@ public class KnockbackConfig {
 	static YamlConfiguration config;
 
 	private static volatile KnockbackProfile currentKb;
-	private static volatile Set<KnockbackProfile> kbProfiles = new HashSet<>();
+	public static volatile Set<KnockbackProfile> kbProfiles = new HashSet<>();
 
 	public static void init(File configFile) {
 		CONFIG_FILE = configFile;
